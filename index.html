@@ -41,6 +41,33 @@
 
         <section id="add" aria-labelledby="add-page">
             <h2 id="add-page">Add / Edit</h2>
+            <form>
+                <div>
+                    <label for="description">Description</label>
+                    <input id="description" name="description" type="text" aria-describedby="description-error">
+                    <span id="description-error" role="alert"></span>
+                </div>
+
+                <div>
+                    <label for="amount">Amount</label>
+                    <input id="amount" name="amount" type="text" aria-describedby="amount-error">
+                    <span id="amount-error" role="alert"></span>
+                </div>
+
+                <div>
+                    <label for="category">Category</label>
+                    <input id="category" name="category" type="text" aria-describedby="category-error">
+                    <span id="category-error" role="alert"></span>
+                </div>
+
+                <div>
+                    <label for="date">Date</label>
+                    <input id="date" name="date" type="text" aria-describedby="date-error">
+                    <span id="date-error" role="alert"></span>
+                </div>
+
+                <button type="submit">Add expenses</button>
+            </form>
         </section>
 
         <section id="settings" aria-labelledby="settings-page">
@@ -50,5 +77,8 @@
     <footer>
         <p>Built by Dorcase Lesly Nana Tounda; <a href="https://github.com/DTounda">GitHub</a></p>
     </footer>
+
+    <script src="scripts/validator.js"></script>
+    <script src="scripts/form.js"></script>
 </body>
 </html>

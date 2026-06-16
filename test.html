@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+</head>
+<body>
+  <h1>Validator Tests</h1>
+    <ul id="results"></ul>
+
+    <script src="scripts/validator.js"></script>
+    <script>
+        const results = document.getElementById("results");
+
+        function check(name, actual, expected) {
+            const li = document.createElement("li");
+            const pass = actual === expected;
+            li.textContent = (pass ? "PASS" : "FAIL") + " — " + name;
+            results.appendChild(li);
+        }
+
+        check("amount 12.50 valid", amountCheck("12.50"), true);
+        check("amount 12.500 invalid", amountCheck("12.500"), false);
+        check("description clean valid", descriptionValidation("lunch"), true);
+        check("description leading space invalid", descriptionValidation(" lunch"), false);
+        check("category Food valid", categoryCheck("Food"), true);
+        check("category Food123 invalid", categoryCheck("Food123"), false);
+        check("date valid", validateDate("2025-09-25"), true);
+        check("date bad month invalid", validateDate("2025-13-01"), false);
+        check("duplicate word detected", containDuplicateWords("lunch lunch"), true);
+        check("no duplicate", containDuplicateWords("lunch"), false);
+    </script>
+</body>
+</html>
