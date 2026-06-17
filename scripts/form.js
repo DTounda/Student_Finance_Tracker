@@ -53,7 +53,9 @@ form.addEventListener("submit", function (event) {
             editingId = null;
         }
        renderRecords(records);
-        form.reset();
+       renderStats();
+       renderCap();
+       form.reset();
     }
 });
 

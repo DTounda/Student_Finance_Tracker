@@ -10,7 +10,7 @@ function renderRecords(content, regex = null) {
             "<td>" + record.category + "</td>" +
             "<td>" + record.date + "</td>" + 
             "<td><button class='edit-btn' data-id='" + record.id + "'>Edit</button>" +
-            "<td><button class='delete-btn' data-id='" + record.id + "'>Delete</button></td>";
+            "<button class='delete-btn' data-id='" + record.id + "'>Delete</button></td>";
         tbody.appendChild(row);
     }
 }
@@ -88,6 +88,8 @@ recordsBody.addEventListener("click", function (event) {
                 return record.id !== id;
             });
             renderRecords(records);
+            renderStats();
+            renderCap();
         }
     } else if (event.target.classList.contains("edit-btn")) {
         const id = event.target.dataset.id;
@@ -101,3 +103,72 @@ recordsBody.addEventListener("click", function (event) {
         editingId = id;
     }
 });
+
+function renderStats() {
+    document.getElementById("count-stats").textContent = records.length;
+
+    let sum = 0;
+    for (const record of records) {
+        sum = sum + record.amount;
+    }
+    document.getElementById("sum-stats").textContent = sum.toFixed(2);
+
+    const counts = {};
+    for (const record of records) {
+        if (counts[record.category]) {
+            counts[record.category] = counts[record.category] + 1;
+        } else {
+            counts[record.category] = 1;
+        }
+    }
+
+    let topCategory = "";
+    let topCount = 0;
+    for (const category in counts) {
+        if (counts[category] > topCount) {
+            topCount = counts[category];
+            topCategory = category;
+        }
+    }
+
+    document.getElementById("top-stats").textContent = topCategory;
+
+    const today = new Date();
+    const weekAgo = new Date();
+    weekAgo.setDate(today.getDate() - 7);
+
+    let weekCount = 0;
+    for (const record of records) {
+        const recordDate = new Date(record.date);
+        if (recordDate >= weekAgo && recordDate <= today) {
+            weekCount = weekCount + 1;
+        }
+    }
+    document.getElementById("stat-week").textContent = weekCount + " records";
+}
+
+renderStats();
+
+function renderCap() {
+    const capInput = document.getElementById("cap");
+    const cap = parseFloat(capInput.value);
+    const capMessage = document.getElementById("cap-message");
+
+    let sum = 0;
+    for (const record of records) {
+        sum = sum + record.amount;
+    }
+
+    if (sum > cap) {
+        capMessage.setAttribute("aria-live", "assertive");
+        capMessage.textContent = "You have exceeded your cap by " + (sum - cap).toFixed(2);
+    } else {
+        capMessage.setAttribute("aria-live", "polite");
+        capMessage.textContent = "You have " + (cap - sum).toFixed(2) + " remaining";
+    }
+}
+
+renderCap();
+
+const capInput = document.getElementById("cap");
+capInput.addEventListener("input", renderCap);

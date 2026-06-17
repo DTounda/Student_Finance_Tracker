@@ -33,6 +33,11 @@
 
         <section id="dashboard" aria-labelledby="dashboard-page">
             <h2 id="dashboard-page">Dashboard</h2>
+            <p>Total records: <span id="count-stats"></span></p>
+            <p>Total amount: <span id="sum-stats"></span></p>
+            <p>Top category: <span id="top-stats"></span></p>
+            <p>Last 7 days: <span id="stat-week"></span></p>
+            <p id="cap-message" aria-live="polite"></p>
         </section>
 
         <section id="records" aria-labelledby="records-page">
@@ -90,6 +95,8 @@
 
         <section id="settings" aria-labelledby="settings-page">
             <h2 id="settings-page">Settings</h2>
+            <label for="cap">Spending cap</label>
+            <input id="cap" type="text" value="100">
         </section>
     </main>
     <footer>
