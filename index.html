@@ -37,6 +37,24 @@
 
         <section id="records" aria-labelledby="records-page">
             <h2 id="records-page">Records</h2>
+            <label for="search">Search</label>
+            <input id="search" type="text" aria-describedby="search-help">
+            <span id="search-help">Type the word you are searching </span>
+            <button id="amount-sort">Sort by Amount</button>
+            <button id="description-sort">Sort by description</button>
+            <button id="date-sort">Sort by date</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="records-body"></tbody>
+            </table>
         </section>
 
         <section id="add" aria-labelledby="add-page">
@@ -78,6 +96,9 @@
         <p>Built by Dorcase Lesly Nana Tounda; <a href="https://github.com/DTounda">GitHub</a></p>
     </footer>
 
+    <script src="scripts/state.js"></script>
+    <script src="scripts/search.js"></script>
+    <script src="scripts/ui.js"></script>
     <script src="scripts/validator.js"></script>
     <script src="scripts/form.js"></script>
 </body>
