@@ -9,7 +9,7 @@ form.addEventListener("submit", function (event) {
     event.preventDefault();
 
     const description = document.getElementById("description").value;
-    const category = document.getElementById("category").value;
+    const category = document.getElementById("category").value.trim().toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase());
     const amount = document.getElementById("amount").value;
     const date = document.getElementById("date").value;
 
