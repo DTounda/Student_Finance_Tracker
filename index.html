@@ -20,7 +20,7 @@
             </ul>
         </nav>
     </header>
-   <main id="main">
+    <main id="main">
         <section id="about" aria-labelledby="about-page">
             <h2 id="about-page">About</h2>
             <p>A finance tracker web application that helps student add expenses, search them, and see where your money goes.</p>
@@ -32,22 +32,64 @@
         </section>
 
         <section id="dashboard" aria-labelledby="dashboard-page">
-            <h2 id="dashboard-page">Dashboard</h2>
-            <p>Total records: <span id="count-stats"></span></p>
-            <p>Total spending: <span id="sum-stats"></span></p>
-            <p>Top category: <span id="top-stats"></span></p>
-            <p>Last 7 days: <span id="stat-week"></span></p>
-            <p id="cap-message" aria-live="polite"></p>
+            <div class="dashboard-top">
+                <h2 id="dashboard-page">Dashboard</h2>
+                <div class="currency-box">
+                    <h3>Currency</h3>
+                    <label for="currency">Display currency</label>
+                    <select id="currency">
+                        <option value="RWF">RWF (base)</option>
+                        <option value="USD">USD</option>
+                        <option value="XAF">XAF</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-label">Total records</span>
+                    <span class="stat-value" id="count-stats"></span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Total spending</span>
+                    <span class="stat-value" id="sum-stats"></span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Top category</span>
+                    <span class="stat-value" id="top-stats"></span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Last 7 days</span>
+                    <span class="stat-value" id="stat-week"></span>
+                </div>
+            </div>
+
+            <p id="cap-message" aria-live="polite" class="cap-message"></p>
+
+            <div class="chart-box">
+                <h3>Spending by category</h3>
+                <svg id="category-chart" viewBox="0 0 200 200" role="img" aria-label="Pie chart of spending by category"></svg>
+                <ul id="chart-legend" class="chart-legend"></ul>
+            </div>
         </section>
 
         <section id="records" aria-labelledby="records-page">
             <h2 id="records-page">Records</h2>
-            <label for="search">Search</label>
-            <input id="search" type="text" aria-describedby="search-help">
-            <span id="search-help">Type the word you are searching </span>
-            <button id="amount-sort">Sort by Amount</button>
-            <button id="description-sort">Sort by description</button>
-            <button id="date-sort">Sort by date</button>
+            <div class="records-controls">
+                <div class="search-box">
+                    <label for="search">Search records</label>
+                    <input id="search" type="text" placeholder="Type to search..." aria-describedby="search-help">
+                    <span id="search-help" class="help-text">Search by description</span>
+                </div>
+                <div class="sort-box">
+                    <label for="sort-select">Sort by</label>
+                    <select id="sort-select">
+                        <option value="amount">Amount</option>
+                        <option value="description">Description</option>
+                        <option value="date">Date</option>
+                    </select>
+                </div>
+            </div>
             <table>
                 <thead>
                     <tr>
@@ -65,56 +107,58 @@
         <section id="add" aria-labelledby="add-page">
             <h2 id="add-page">Add / Edit</h2>
             <form>
-                <div>
+                <div class="form-field">
                     <label for="description">Description</label>
-                    <input id="description" name="description" type="text" aria-describedby="description-error">
-                    <span id="description-error" role="alert"></span>
+                    <input id="description" name="description" type="text" placeholder="e.g. Lunch at cafeteria" aria-describedby="description-error">
+                    <span id="description-error" role="alert" class="error-msg"></span>
                 </div>
 
-                <div>
-                    <label for="amount">Amount</label>
-                    <input id="amount" name="amount" type="text" aria-describedby="amount-error">
-                    <span id="amount-error" role="alert"></span>
+                <div class="form-field">
+                    <label for="amount">Amount (RWF)</label>
+                    <input id="amount" name="amount" type="text" placeholder="e.g. 3500" aria-describedby="amount-error">
+                    <span id="amount-error" role="alert" class="error-msg"></span>
                 </div>
 
-                <div>
+                <div class="form-field">
                     <label for="category">Category</label>
-                    <input id="category" name="category" type="text" aria-describedby="category-error">
-                    <span id="category-error" role="alert"></span>
+                    <input id="category" name="category" type="text" placeholder="e.g. Food, Books, Transport" aria-describedby="category-error">
+                    <span id="category-error" role="alert" class="error-msg"></span>
                 </div>
 
-                <div>
+                <div class="form-field">
                     <label for="date">Date</label>
-                    <input id="date" name="date" type="text" aria-describedby="date-error">
-                    <span id="date-error" role="alert"></span>
+                    <input id="date" name="date" type="text" placeholder="YYYY-MM-DD" aria-describedby="date-error">
+                    <span id="date-error" role="alert" class="error-msg"></span>
                 </div>
 
-                <button type="submit">Add expenses</button>
+                <button type="submit" class="submit-btn">Add expense</button>
             </form>
         </section>
 
         <section id="settings" aria-labelledby="settings-page">
             <h2 id="settings-page">Settings</h2>
-            <label for="cap">Spending cap</label>
-            <input id="cap" type="text" value="100">
-            <button id="export-btn">JSON Export</button>
-            <label for="import-file">Import JSON</label>
-            <input id="import-file" type="file" accept="application/json">
-            <p id="import-message" role="status" aria-live="polite"></p>
 
-            <h3>Currency</h3>
-            <label for="currency">Display currency</label>
-            <select id="currency">
-                <option value="RWF">RWF (base)</option>
-                <option value="USD">USD</option>
-                <option value="XAF">XAF</option>
-            </select>
+            <div class="setting-group">
+                <h3>Spending cap</h3>
+                <label for="cap">Cap amount (RWF)</label>
+                <input id="cap" type="text" value="1000000">
+            </div>
 
-            <label for="rate-usd">USD rate (1 USD = ? RWF)</label>
-            <input id="rate-usd" type="text" value="1300">
+            <div class="setting-group">
+                <h3>Stored data</h3>
+                <button id="export-btn">Export file</button>
+                <label for="import-file">Import file</label>
+                <input id="import-file" type="file" accept="application/json">
+                <p id="import-message" role="status" aria-live="polite"></p>
+            </div>
 
-            <label for="rate-xaf">XAF rate (1 XAF = ? RWF)</label>
-            <input id="rate-xaf" type="text" value="2.2">
+            <div class="setting-group">
+                <h3>Exchange rates</h3>
+                <label for="rate-usd">USD rate (1 USD = ? RWF)</label>
+                <input id="rate-usd" type="text" value="1300">
+                <label for="rate-xaf">XAF rate (1 XAF = ? RWF)</label>
+                <input id="rate-xaf" type="text" value="2.2">
+            </div>
         </section>
     </main>
     <footer>
@@ -127,5 +171,6 @@
     <script src="scripts/ui.js"></script>
     <script src="scripts/validator.js"></script>
     <script src="scripts/form.js"></script>
+    <script src="scripts/navigation.js"></script>
 </body>
 </html>

@@ -9,7 +9,15 @@ function loadRecords() {
     if (stored === null) {
         return;
     }
-    records = JSON.parse(stored);
+    try {
+        const data = JSON.parse(stored);
+        if (validateRecords(data)) {
+            records = data;
+        }
+        
+    } catch {
+        
+    }
 }
 loadRecords();
 loadCap();

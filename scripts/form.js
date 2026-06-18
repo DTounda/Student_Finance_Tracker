@@ -1,4 +1,9 @@
 const form = document.querySelector("form");
+const submitBtn = document.querySelector(".submit-btn");
+
+function updateSubmitLabel() {
+    submitBtn.textContent = editingId === null ? "Add expense" : "Save";
+}
 
 form.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -57,6 +62,7 @@ form.addEventListener("submit", function (event) {
        renderCap();
        saveRecords();
        form.reset();
+       updateSubmitLabel();
     }
 });
 
