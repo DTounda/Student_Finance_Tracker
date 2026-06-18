@@ -34,7 +34,7 @@
         <section id="dashboard" aria-labelledby="dashboard-page">
             <h2 id="dashboard-page">Dashboard</h2>
             <p>Total records: <span id="count-stats"></span></p>
-            <p>Total amount: <span id="sum-stats"></span></p>
+            <p>Total spending: <span id="sum-stats"></span></p>
             <p>Top category: <span id="top-stats"></span></p>
             <p>Last 7 days: <span id="stat-week"></span></p>
             <p id="cap-message" aria-live="polite"></p>
@@ -52,7 +52,7 @@
                 <thead>
                     <tr>
                         <th>Description</th>
-                        <th>Amount</th>
+                        <th>Amount (RWF)</th>
                         <th>Category</th>
                         <th>Date</th>
                         <th>Actions</th>
@@ -97,6 +97,24 @@
             <h2 id="settings-page">Settings</h2>
             <label for="cap">Spending cap</label>
             <input id="cap" type="text" value="100">
+            <button id="export-btn">JSON Export</button>
+            <label for="import-file">Import JSON</label>
+            <input id="import-file" type="file" accept="application/json">
+            <p id="import-message" role="status" aria-live="polite"></p>
+
+            <h3>Currency</h3>
+            <label for="currency">Display currency</label>
+            <select id="currency">
+                <option value="RWF">RWF (base)</option>
+                <option value="USD">USD</option>
+                <option value="XAF">XAF</option>
+            </select>
+
+            <label for="rate-usd">USD rate (1 USD = ? RWF)</label>
+            <input id="rate-usd" type="text" value="1300">
+
+            <label for="rate-xaf">XAF rate (1 XAF = ? RWF)</label>
+            <input id="rate-xaf" type="text" value="2.2">
         </section>
     </main>
     <footer>
@@ -104,6 +122,7 @@
     </footer>
 
     <script src="scripts/state.js"></script>
+    <script src="scripts/storage.js"></script>
     <script src="scripts/search.js"></script>
     <script src="scripts/ui.js"></script>
     <script src="scripts/validator.js"></script>

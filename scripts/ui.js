@@ -90,6 +90,7 @@ recordsBody.addEventListener("click", function (event) {
             renderRecords(records);
             renderStats();
             renderCap();
+            saveRecords();
         }
     } else if (event.target.classList.contains("edit-btn")) {
         const id = event.target.dataset.id;
@@ -111,7 +112,7 @@ function renderStats() {
     for (const record of records) {
         sum = sum + record.amount;
     }
-    document.getElementById("sum-stats").textContent = sum.toFixed(2);
+    document.getElementById("sum-stats").textContent = convertAmount(sum);
 
     const counts = {};
     for (const record of records) {
@@ -171,4 +172,29 @@ function renderCap() {
 renderCap();
 
 const capInput = document.getElementById("cap");
-capInput.addEventListener("input", renderCap);
+capInput.addEventListener("input", function () {
+    renderCap();
+    saveCap();
+});
+
+function convertAmount(amountInBase) {
+    const currency = document.getElementById("currency").value;
+    if (currency === "USD") {
+        const rate = parseFloat(document.getElementById("rate-usd").value);
+        return (amountInBase / rate).toFixed(2) + " USD";
+    } else if (currency === "XAF") {
+        const rate = parseFloat(document.getElementById("rate-xaf").value);
+        return (amountInBase / rate).toFixed(2) + " XAF";
+    } else {
+        return amountInBase.toFixed(2) + " RWF";
+    }
+}
+
+function refreshCurrencyView() {
+    renderStats();
+    saveCurrency();
+}
+
+document.getElementById("currency").addEventListener("change", refreshCurrencyView);
+document.getElementById("rate-usd").addEventListener("input", refreshCurrencyView);
+document.getElementById("rate-xaf").addEventListener("input", refreshCurrencyView);

@@ -55,6 +55,7 @@ form.addEventListener("submit", function (event) {
        renderRecords(records);
        renderStats();
        renderCap();
+       saveRecords();
        form.reset();
     }
 });

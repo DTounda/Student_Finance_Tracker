@@ -1,0 +1,101 @@
+[
+  {
+    "id": "rec_0001",
+    "description": "Lunch at cafeteria",
+    "amount": 3500,
+    "category": "Food",
+    "date": "2025-09-25",
+    "createdAt": "2025-09-25T12:03:00.000Z",
+    "updatedAt": "2025-09-25T12:03:00.000Z"
+  },
+  {
+    "id": "rec_0002",
+    "description": "Chemistry textbook",
+    "amount": 45000,
+    "category": "Books",
+    "date": "2025-09-23",
+    "createdAt": "2025-09-23T09:15:00.000Z",
+    "updatedAt": "2025-09-23T09:15:00.000Z"
+  },
+  {
+    "id": "rec_0003",
+    "description": "Bus pass",
+    "amount": 12000,
+    "category": "Transport",
+    "date": "2025-09-20",
+    "createdAt": "2025-09-20T07:40:00.000Z",
+    "updatedAt": "2025-09-20T07:40:00.000Z"
+  },
+  {
+    "id": "rec_0004",
+    "description": "Coffee with friends",
+    "amount": 2500.50,
+    "category": "Entertainment",
+    "date": "2025-09-28",
+    "createdAt": "2025-09-28T16:22:00.000Z",
+    "updatedAt": "2025-09-28T16:22:00.000Z"
+  },
+  {
+    "id": "rec_0005",
+    "description": "Semester tuition deposit",
+    "amount": 850000,
+    "category": "Fees",
+    "date": "2025-01-15",
+    "createdAt": "2025-01-15T08:00:00.000Z",
+    "updatedAt": "2025-01-15T08:00:00.000Z"
+  },
+  {
+    "id": "rec_0006",
+    "description": "Pen",
+    "amount": 300,
+    "category": "Other",
+    "date": "2025-12-31",
+    "createdAt": "2025-12-31T23:59:00.000Z",
+    "updatedAt": "2025-12-31T23:59:00.000Z"
+  },
+  {
+    "id": "rec_0007",
+    "description": "Notebook set 5-pack",
+    "amount": 6800,
+    "category": "Books",
+    "date": "2025-02-29",
+    "createdAt": "2025-02-29T10:30:00.000Z",
+    "updatedAt": "2025-02-29T10:30:00.000Z"
+  },
+  {
+    "id": "rec_0008",
+    "description": "Tea and a croissant",
+    "amount": 1800,
+    "category": "Food",
+    "date": "2025-09-01",
+    "createdAt": "2025-09-01T08:12:00.000Z",
+    "updatedAt": "2025-09-01T08:12:00.000Z"
+  },
+  {
+    "id": "rec_0009",
+    "description": "Train ticket to Kigali",
+    "amount": 35000,
+    "category": "Transport",
+    "date": "2025-06-15",
+    "createdAt": "2025-06-15T05:45:00.000Z",
+    "updatedAt": "2025-06-18T11:00:00.000Z"
+  },
+  {
+    "id": "rec_0010",
+    "description": "Cinema night ticket",
+    "amount": 4500,
+    "category": "Entertainment",
+    "date": "2025-10-05",
+    "createdAt": "2025-10-05T19:30:00.000Z",
+    "updatedAt": "2025-10-05T19:30:00.000Z"
+  },
+  {
+    "id": "rec_0011",
+    "description": "Late library fine fine",
+    "amount": 1500,
+    "category": "Fees",
+    "date": "2025-08-08",
+    "createdAt": "2025-08-08T14:00:00.000Z",
+    "updatedAt": "2025-08-08T14:00:00.000Z"
+  }
+]
