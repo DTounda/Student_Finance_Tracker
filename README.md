@@ -6,10 +6,9 @@ An accessible, responsive, single-page web app that helps students record expens
 
 ## Links
 
-- **Live demo (GitHub Pages):** 
-
-- **Repository:** https://github.com/DTounda/Student_Finance_Tracker
-
+- **Web app:** https://dtounda.github.io/Student_Finance_Tracker/
+- **GitHub repository:** https://github.com/DTounda/Student_Finance_Tracker
+- **Demo video:** 
 
 ## Table of Contents
 
@@ -17,7 +16,6 @@ An accessible, responsive, single-page web app that helps students record expens
 - [Features](#features)
 - [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Data Model & Persistence](#data-model--persistence)
 - [Currency Conversion](#currency-conversion)
@@ -26,7 +24,6 @@ An accessible, responsive, single-page web app that helps students record expens
 - [Keyboard Map](#keyboard-map)
 - [Accessibility](#accessibility)
 - [Running the Tests](#running-the-tests)
-- [Demo Video](#demo-video)
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 - [License](#license)
@@ -61,7 +58,7 @@ Key design decisions:
 ## Tech Stack
 
 - HTML5 (semantic landmarks)
-- CSS (Flexbox, CSS Grid, media queries, keyframe animation)
+- CSS3 (Flexbox, CSS Grid, media queries, keyframe animation)
 - Vanilla JavaScript (ES2015+), no libraries or frameworks
 - Browser `localStorage` for persistence
 - SVG for the category chart
@@ -90,32 +87,6 @@ student-finance-tracker/
 
 The scripts are loaded in dependency order (`state → storage → search → ui → validator → form → navigation`), because later files use values defined in earlier ones (for example, `ui.js` reads `records` from `state.js`, and `navigation.js` uses helpers from `form.js`).
 
-## Getting Started
-
-### Prerequisites
-
-A modern web browser (Chrome, Firefox, Edge, or Safari). No build step, no installation, no dependencies.
-
-### Run locally
-
-Clone the repository:
-
-```bash
-git clone https://github.com/DTounda/REPLACE-WITH-YOUR-REPO-NAME.git
-cd REPLACE-WITH-YOUR-REPO-NAME
-```
-
-Then either:
-
-- **Open it directly** — double-click `index.html`, or
-- **Serve it locally** (recommended) with any static server, e.g.:
-
-```bash
-python3 -m http.server 8000
-```
-
-and open `http://localhost:8000` in your browser. (VS Code's *Live Server* extension works too.)
-
 ## Usage
 
 - **Add an expense:** go to **Add / Edit**, fill in description, amount, category, and date, then press **Add expense**. Invalid fields show an inline message and the record is not saved.
@@ -125,7 +96,7 @@ and open `http://localhost:8000` in your browser. (VS Code's *Live Server* exten
 - **Sort:** use the **Sort by** dropdown (amount, description, or date).
 - **Spending cap:** set it under **Settings → Spending cap**; the Dashboard message updates to show what's remaining, or how far over you are.
 - **Currency:** pick the display currency on the Dashboard and set the rates under **Settings → Exchange rates**.
-- **Export / Import:** under **Settings → Stored data**, export all records to `records.json`, or import a JSON file (it is validated before loading, and malformed files are rejected with a message).
+- **Export / Import:** under **Settings → Stored data**, export all records to `records.json`, or import a JSON file (it is validated before loading, and malformed files are rejected with a message). Import the included `seed.json` to load 11 sample records.
 
 ## Data Model & Persistence
 
@@ -195,7 +166,7 @@ function compileRegex(input) {
   try {
     return input ? new RegExp(input, "i") : null;
   } catch {
-    return null;   
+    return null;   // invalid pattern → show all records
   }
 }
 ```
@@ -238,6 +209,14 @@ The whole app is operable with the keyboard alone.
 - **Contrast:** dark brown text on a light cream background, and white text on the brown header, for readable contrast.
 - **Mobile:** the records table reflows into labelled cards (via `data-label`) instead of a horizontally scrolling table.
 
+## Running the Tests
+
+A small assertion runner lives in `tests.html`.
+
+1. Open `tests.html` in your browser by double-clicking it.
+2. It loads `scripts/validator.js` and runs each check, printing `PASS` or `FAIL` in a list.
+
+It covers the amount format (valid and over-precise decimals), the description leading-space rule, the category letters-only rule, the date month bounds, and the duplicate-word back-reference. A successful run shows `PASS` on every line.
 
 ## Author
 
@@ -245,6 +224,8 @@ The whole app is operable with the keyboard alone.
 
 - GitHub: [@DTounda](https://github.com/DTounda)
 - Email: d.nanatoun@alustudent.com
+
+This repository is individual work; the contribution history reflects a single author.
 
 ## License
 
