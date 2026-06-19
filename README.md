@@ -8,7 +8,7 @@ An accessible, responsive, single-page web app that helps students record expens
 
 - **Web app:** https://dtounda.github.io/Student_Finance_Tracker/
 - **GitHub repository:** https://github.com/DTounda/Student_Finance_Tracker
-- **Demo video:** 
+- **Demo video:** https://youtu.be/MJFHok8AuLQ
 
 ## Table of Contents
 
